@@ -32,7 +32,7 @@ html.snap-scroll, body.snap-scroll {
 }
 .background {
   position: fixed; inset: 0;
-  background: url('https://images.unsplash.com/photo-1602136773736-34d445b989cb?auto=format&fit=crop&w=1200&q=80')
+  background: url('')
               center/cover fixed;
   filter: brightness(40%) blur(5px);
   z-index: -1;
