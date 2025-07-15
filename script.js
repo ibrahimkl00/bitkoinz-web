@@ -38,7 +38,7 @@ function drawMatrix() {
   ctx.font      = `${fontSize}px monospace`;
 
   for (let i = 0; i < columns; i++) {
-    const char = String.fromCharCode(0x30A0 + Math.random()*96);
+    const char = String.fromCharCode(0x30A0 + Math.random() * 96);
     const x    = i * fontSize;
     const y    = drops[i] * fontSize;
     ctx.fillText(char, x, y);
@@ -51,15 +51,16 @@ function drawMatrix() {
 rafId = requestAnimationFrame(drawMatrix);
 
 // 3) Typewriter helper
-function typeWithCursor(text, el, speed=50, cb) {
-  let i=0;
+function typeWithCursor(text, el, speed = 50, cb) {
+  let i = 0;
   function step() {
-    if(i < text.length) {
-      el.textContent = text.slice(0, i+1) + '_';
-      i++; setTimeout(step, speed);
+    if (i < text.length) {
+      el.textContent = text.slice(0, i + 1) + '_';
+      i++;
+      setTimeout(step, speed);
     } else {
       el.textContent = text;
-      if(cb) cb();
+      if (cb) cb();
     }
   }
   step();
@@ -67,9 +68,9 @@ function typeWithCursor(text, el, speed=50, cb) {
 
 // 4) Reveal main & hero typewriter
 function showMainContent() {
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
   const main = document.getElementById('mainContent');
-  main.style.display = 'block';
+  main.style.display       = 'block';
   main.style.pointerEvents = 'auto';
   setTimeout(() => {
     main.style.opacity = 1;
@@ -96,7 +97,15 @@ function startSequence() {
   }, 500);
 }
 
-// 6) Kick off on load
-window.addEventListner('load', () => {
+// 6) Kick off on load (with readyState fallback)
+function scheduleStart() {
   setTimeout(startSequence, MATRIX_DURATION);
-});
+}
+
+if (document.readyState === 'complete') {
+  // page already loaded (e.g. on GitHub Pages), so schedule immediately
+  scheduleStart();
+} else {
+  // otherwise wait for the load event
+  window.addEventListener('load', scheduleStart);
+}
