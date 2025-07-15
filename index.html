@@ -1,48 +1,47 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bitkoinz Matrix Launch</title>
-  <link href="https://fonts.googleapis.com/css2?family=Iceland&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
+  <script src="script.js" defer></script>
 </head>
 <body class="snap-scroll">
-
-  <!-- Matrix rain canvas -->
   <canvas id="matrix"></canvas>
+  <img
+    src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/bzlogo.png"
+    class="logo"
+    alt="Bitkoinz Logo"
+  />
 
-  <!-- Logo fade -->
-  <img class="logo" src="bzlogo.png" alt="Bitkoinz Logo" onerror="this.style.display='none'">
-
-  <!-- Main content -->
-  <div id="mainContent">
+  <div
+    id="mainContent"
+    style="display:none; opacity:0; transition:opacity .5s; pointer-events:none;"
+  >
+    <!-- blurred page background -->
     <div class="background"></div>
 
+    <!-- hero with Neon2 text + console typewriter -->
     <section class="hero-section">
-      <h1 class="hero-title">BITKOINZ</h1>
-      <div class="console"><pre id="typewriter"></pre></div>
+      <h1 class="hero-title">Bitkoinz</h1>
+      <div class="console">
+        <pre id="typewriter"></pre>
+      </div>
     </section>
 
-    <!-- Product cards with responsive images -->
+    <!-- product cards -->
     <div class="product-card-container">
       <div class="product-card">
         <div class="image-container">
           <img
-            src="alpha-800w.webp"
-            srcset="
-              alpha-480w.webp 480w,
-              alpha-800w.webp 800w,
-              alpha-1200w.webp 1200w
-            "
-            sizes="(max-width: 768px) 80vw, 70vw"
-            width="800" height="450"
-            loading="lazy"
-            alt="Alpha 1"
-          >
+            src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/alpha.webp"
+            alt="Alpha"
+          />
         </div>
         <div class="card-footer">
-          <h2>Alpha 1</h2>
+          <h2>Alpha</h2>
           <button>Notify Me</button>
         </div>
       </div>
@@ -52,20 +51,12 @@
       <div class="product-card">
         <div class="image-container">
           <img
-            src="beta-800w.webp"
-            srcset="
-              beta-480w.webp 480w,
-              beta-800w.webp 800w,
-              beta-1200w.webp 1200w
-            "
-            sizes="(max-width: 768px) 80vw, 70vw"
-            width="800" height="450"
-            loading="lazy"
-            alt="Beta 1"
-          >
+            src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/beta.webp"
+            alt="Beta"
+          />
         </div>
         <div class="card-footer">
-          <h2>Beta 1</h2>
+          <h2>Beta</h2>
           <button>Notify Me</button>
         </div>
       </div>
@@ -75,20 +66,12 @@
       <div class="product-card">
         <div class="image-container">
           <img
-            src="core-800w.webp"
-            srcset="
-              core-480w.webp 480w,
-              core-800w.webp 800w,
-              core-1200w.webp 1200w
-            "
-            sizes="(max-width: 768px) 80vw, 70vw"
-            width="800" height="450"
-            loading="lazy"
-            alt="Core 5"
-          >
+            src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/core.webp"
+            alt="Core"
+          />
         </div>
         <div class="card-footer">
-          <h2>Core 5</h2>
+          <h2>Core</h2>
           <button>Notify Me</button>
         </div>
       </div>
@@ -98,20 +81,12 @@
       <div class="product-card">
         <div class="image-container">
           <img
-            src="sigma.webp"
-            srcset="
-              sigma-480w.webp 480w,
-              sigma-800w.webp 800w,
-              sigma-1200w.webp 1200w
-            "
-            sizes="(max-width: 768px) 80vw, 70vw"
-            width="800" height="450"
-            loading="lazy"
-            alt="Sigma AI"
-          >
+            src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/sigma.webp"
+            alt="Sigma"
+          />
         </div>
         <div class="card-footer">
-          <h2>Sigma AI</h2>
+          <h2>Sigma</h2>
           <button>Notify Me</button>
         </div>
       </div>
@@ -121,26 +96,16 @@
       <div class="product-card">
         <div class="image-container">
           <img
-            src="FutureAI-800w.webp"
-            srcset="
-              FutureAI-480w.webp 480w,
-              FutureAI-800w.webp 800w,
-              FutureAI-1200w.webp 1200w
-            "
-            sizes="(max-width: 768px) 80vw, 70vw"
-            width="800" height="450"
-            loading="lazy"
-            alt="Future-AI"
-          >
+            src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/FutureAI.webp"
+            alt="Future AI"
+          />
         </div>
         <div class="card-footer">
-          <h2>Future-AI</h2>
+          <h2>Future AI</h2>
           <button>Notify Me</button>
         </div>
       </div>
     </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
