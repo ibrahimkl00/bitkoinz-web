@@ -97,6 +97,6 @@ function startSequence() {
 }
 
 // 6) Kick off on load
-window.addEventListener('load', () => {
+window.addEventListner('load', () => {
   setTimeout(startSequence, MATRIX_DURATION);
 });
