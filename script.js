@@ -1,3 +1,4 @@
+// script.js
 // ——— Matrix + Logo + Hero Typewriter Sequence —————————————————————————
 
 // Elements & constants
@@ -20,7 +21,7 @@ function resize() {
   ctx.setTransform(scale, 0, 0, scale, 0, 0);
 
   columns = Math.floor(innerWidth / fontSize);
-  drops   = new Array(columns).fill(1);
+  drops   = Array(columns).fill(1);
 
   gradient = ctx.createLinearGradient(0, 0, 0, innerHeight);
   gradient.addColorStop(0,   '#3399FF');
@@ -38,7 +39,7 @@ function drawMatrix() {
   ctx.font      = `${fontSize}px monospace`;
 
   for (let i = 0; i < columns; i++) {
-    const char = String.fromCharCode(0x30A0 + Math.random() * 96);
+    const char = String.fromCharCode(0x30A0 + Math.random()*96);
     const x    = i * fontSize;
     const y    = drops[i] * fontSize;
     ctx.fillText(char, x, y);
@@ -97,15 +98,12 @@ function startSequence() {
   }, 500);
 }
 
-// 6) Kick off on load (with readyState fallback)
+// 6) Kick off on load
 function scheduleStart() {
   setTimeout(startSequence, MATRIX_DURATION);
 }
-
 if (document.readyState === 'complete') {
-  // page already loaded (e.g. on GitHub Pages), so schedule immediately
   scheduleStart();
 } else {
-  // otherwise wait for the load event
   window.addEventListener('load', scheduleStart);
 }
