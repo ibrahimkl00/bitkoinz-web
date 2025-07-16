@@ -1,24 +1,21 @@
 // script.js
-// ——— Matrix + Logo + Hero Typewriter Sequence —————————————————————————
+// ——— Matrix + Logo + Typewriter Intro ————————————————————————
 
-// Elements & constants
 const canvas   = document.getElementById('matrix');
 const ctx      = canvas.getContext('2d');
 const logo     = document.querySelector('.logo');
 const fontSize = 16;
-const MATRIX_DURATION = 4000; // how long the rain plays
-
+const DURATION = 4000;
 let columns, drops, gradient, rafId;
 
-// 1) Resize → cap DPR @1, calc columns, build gradient
+// 1) Resize & init
 function resize() {
-  const dpr   = window.devicePixelRatio || 1;
-  const scale = Math.min(dpr, 1);
+  const dpr   = Math.min(window.devicePixelRatio || 1, 1);
   canvas.style.width  = `${innerWidth}px`;
   canvas.style.height = `${innerHeight}px`;
-  canvas.width  = innerWidth * scale;
-  canvas.height = innerHeight * scale;
-  ctx.setTransform(scale, 0, 0, scale, 0, 0);
+  canvas.width  = innerWidth * dpr;
+  canvas.height = innerHeight * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
   columns = Math.floor(innerWidth / fontSize);
   drops   = Array(columns).fill(1);
@@ -31,15 +28,15 @@ function resize() {
 window.addEventListener('resize', resize);
 resize();
 
-// 2) Draw the rain
+// 2) Draw matrix
 function drawMatrix() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+  ctx.fillStyle = 'rgba(0,0,0,0.05)';
   ctx.fillRect(0, 0, innerWidth, innerHeight);
   ctx.fillStyle = gradient;
   ctx.font      = `${fontSize}px monospace`;
 
   for (let i = 0; i < columns; i++) {
-    const char = String.fromCharCode(0x30A0 + Math.random()*96);
+    const char = String.fromCharCode(0x30A0 + Math.random() * 96);
     const x    = i * fontSize;
     const y    = drops[i] * fontSize;
     ctx.fillText(char, x, y);
@@ -51,7 +48,7 @@ function drawMatrix() {
 }
 rafId = requestAnimationFrame(drawMatrix);
 
-// 3) Typewriter helper
+// 3) Typewriter
 function typeWithCursor(text, el, speed = 50, cb) {
   let i = 0;
   function step() {
@@ -67,9 +64,8 @@ function typeWithCursor(text, el, speed = 50, cb) {
   step();
 }
 
-// 4) Reveal main & hero typewriter
-function showMainContent() {
-  window.scrollTo(0, 0);
+// 4) Show main content
+function showMain() {
   const main = document.getElementById('mainContent');
   main.style.display       = 'block';
   main.style.pointerEvents = 'auto';
@@ -83,27 +79,33 @@ function showMainContent() {
   }, 50);
 }
 
-// 5) Full sequence: rain → logo → content
-function startSequence() {
+// 5) Intro sequence
+function start() {
+  cancelAnimationFrame(rafId);
   canvas.style.transition = 'opacity .5s';
   canvas.style.opacity    = 0;
-  cancelAnimationFrame(rafId);
 
   setTimeout(() => {
     logo.style.opacity = 1;
     setTimeout(() => {
       logo.style.opacity = 0;
-      setTimeout(showMainContent, 300);
+      setTimeout(showMain, 300);
     }, 2000);
   }, 500);
 }
 
-// 6) Kick off on load
-function scheduleStart() {
-  setTimeout(startSequence, MATRIX_DURATION);
-}
+// Kick off
 if (document.readyState === 'complete') {
-  scheduleStart();
+  setTimeout(start, DURATION);
 } else {
-  window.addEventListener('load', scheduleStart);
+  window.addEventListener('load', () => setTimeout(start, DURATION));
 }
+
+// 6) Smooth wheel → scroll mainContent
+document.addEventListener('wheel', e => {
+  const main = document.getElementById('mainContent');
+  if (getComputedStyle(main).display !== 'none') {
+    e.preventDefault();
+    main.scrollBy({ top: e.deltaY, left: 0, behavior: 'smooth' });
+  }
+}, { passive: false });
