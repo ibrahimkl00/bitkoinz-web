@@ -7,7 +7,7 @@ const logo     = document.querySelector('.logo');
 const fontSize = 16;
 const DURATION = 4000;
 let columns, drops, gradient, rafId;
-
+  
 // 1) Resize & init
 function resize() {
   const dpr   = Math.min(window.devicePixelRatio || 1, 1);
