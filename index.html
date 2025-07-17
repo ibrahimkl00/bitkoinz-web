@@ -6,6 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bitkoinz Matrix Launch</title>
   <link rel="stylesheet" href="style.css"/>
+  <script>
+    // Only apply wheel scroll override on non-touch devices
+    if (!('ontouchstart' in window)) {
+      document.addEventListener('wheel', e => {
+        const main = document.getElementById('mainContent');
+        if (getComputedStyle(main).display !== 'none') {
+          e.preventDefault();
+          main.scrollBy({ top: e.deltaY, left: 0, behavior: 'smooth' });
+        }
+      }, { passive: false });
+    }
+  </script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -20,10 +32,8 @@
     id="mainContent"
     style="display:none; opacity:0; transition:opacity .5s;"
   >
-    <!-- blurred page background -->
     <div class="background"></div>
 
-    <!-- hero with Neon2 text + console typewriter -->
     <section class="hero-section">
       <h1 class="hero-title">Bitkoinz</h1>
       <div class="console">
@@ -35,10 +45,7 @@
     <div class="product-card-container">
       <div class="product-card">
         <div class="image-container">
-          <img
-            src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/alpha.webp"
-            alt="Alpha"
-          />
+          <img src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/alpha.webp" alt="Alpha" />
         </div>
         <div class="card-footer">
           <h2>Alpha</h2>
@@ -50,10 +57,7 @@
     <div class="product-card-container">
       <div class="product-card">
         <div class="image-container">
-          <img
-            src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/beta.webp"
-            alt="Beta"
-          />
+          <img src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/beta.webp" alt="Beta" />
         </div>
         <div class="card-footer">
           <h2>Beta</h2>
@@ -65,10 +69,7 @@
     <div class="product-card-container">
       <div class="product-card">
         <div class="image-container">
-          <img
-            src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/core.webp"
-            alt="Core"
-          />
+          <img src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/core.webp" alt="Core" />
         </div>
         <div class="card-footer">
           <h2>Core</h2>
@@ -80,10 +81,7 @@
     <div class="product-card-container">
       <div class="product-card">
         <div class="image-container">
-          <img
-            src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/sigma.webp"
-            alt="Sigma"
-          />
+          <img src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/sigma.webp" alt="Sigma" />
         </div>
         <div class="card-footer">
           <h2>Sigma</h2>
@@ -95,10 +93,7 @@
     <div class="product-card-container">
       <div class="product-card">
         <div class="image-container">
-          <img
-            src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/FutureAI.webp"
-            alt="Future AI"
-          />
+          <img src="https://ibrahimkl00.github.io/bitkoinz-web/assets/img/FutureAI.webp" alt="Future AI" />
         </div>
         <div class="card-footer">
           <h2>Future AI</h2>
