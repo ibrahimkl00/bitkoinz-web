@@ -201,45 +201,56 @@ html, body {
 
 /* ——— Mobile breakpoint ——— */
 @media (max-width: 768px) {
-  /* KEEP the scroll container at 100vh so it’s still scrollable */
   #mainContent {
     height: 100vh;
   }
 
-  /* let each card grow in height */
   .product-card-container {
     height: auto;
     padding: 1rem 0;
   }
 
-  /* full-width cards, auto height */
   .product-card {
     width: 90vw;
     height: auto;
     margin: 0 auto;
   }
+
   .image-container {
     height: 50vh;
     position: relative;
   }
+
   .product-card img {
     height: 100%;
   }
 
-  /* tighter footer */
   .card-footer {
     padding: 1rem 0.5rem;
   }
 
-  /* scale down hero text */
   .hero-title {
     font-size: 15vw;
   }
 
-  /* narrower console */
   .console {
     width: 95%;
     min-height: 3em;
     font-size: 1rem;
+  }
+
+  .card-footer h2 {
+    font-size: 1.8rem;
+  }
+
+  .card-footer button {
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    width: 90%;
+  }
+
+  .product-card-container:hover .product-card {
+    transform: none;
+    box-shadow: none;
   }
 }
